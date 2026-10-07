@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/favicon-v3.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Andreas Music Hub">
+  <meta property="og:description" content="Community • Events • Activities">
+  <meta property="og:image" content="/preview.png">
+  <meta property="og:site_name" content="Andreas Music Hub">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Andreas Music Hub">
+  <meta name="twitter:description" content="Community • Events • Activities">
+  <meta name="twitter:image" content="/preview.png">
+  
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#050505">
+<title>Opening Soon — Andreas Music Hub</title>
+<style>
+:root{--orange:#ff6a00;--orange2:#ff963f;--text:#f7f5f2;--muted:#aaa7a3}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;height:100%}
+body{
+  overflow:hidden;background:#050505;color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text",Inter,Segoe UI,sans-serif;
+  display:grid;place-items:center;
+}
+#fx{position:fixed;inset:0;z-index:0}
+.orb{position:fixed;border-radius:50%;filter:blur(85px);opacity:.24;pointer-events:none}
+.a{width:430px;height:430px;background:#ff5a00;left:-180px;top:10%}
+.b{width:340px;height:340px;background:#ff8a2b;right:-130px;bottom:5%}
+.wrap{position:relative;z-index:2;width:min(900px,calc(100% - 28px));text-align:center}
+.glass{
+  padding:60px 30px 55px;border-radius:40px;
+  background:linear-gradient(145deg,rgba(255,255,255,.085),rgba(255,255,255,.025));
+  border:1px solid rgba(255,255,255,.14);
+  backdrop-filter:blur(30px) saturate(140%);
+  -webkit-backdrop-filter:blur(30px) saturate(140%);
+  box-shadow:0 40px 120px rgba(0,0,0,.55),inset 0 1px rgba(255,255,255,.1);
+}
+.logo{
+  width:92px;height:92px;object-fit:cover;border-radius:27px;
+  box-shadow:0 0 60px rgba(255,106,0,.27),0 20px 45px rgba(0,0,0,.45);
+  margin-bottom:25px;
+}
+.kicker{font-size:11px;font-weight:800;letter-spacing:2px;color:#ff8d4b;text-transform:uppercase}
+h1{font-size:clamp(48px,9vw,92px);letter-spacing:-5px;line-height:.9;margin:15px 0 30px}
+.gradient{background:linear-gradient(115deg,#fff 20%,#fff 45%,#ff984e 75%,#ff5a00);-webkit-background-clip:text;background-clip:text;color:transparent}
+.timer{
+  display:flex;justify-content:center;align-items:center;gap:10px;
+  font-variant-numeric:tabular-nums;margin:10px 0 20px
+}
+.unit{
+  min-width:135px;padding:18px 18px;border-radius:23px;
+  background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.1);
+  box-shadow:inset 0 1px rgba(255,255,255,.06)
+}
+.num{font-size:clamp(42px,7vw,70px);font-weight:750;letter-spacing:-3px}
+.label{font-size:9px;color:#77736f;letter-spacing:1.5px;text-transform:uppercase;margin-top:4px}
+.colon{font-size:45px;color:#ff7130;font-weight:700;margin-top:-25px}
+p{color:#9f9b96;font-size:14px;line-height:1.6;margin-top:22px}
+@media(max-width:600px){
+  .glass{padding:45px 15px}
+  .timer{gap:5px}
+  .unit{min-width:88px;padding:14px 8px;border-radius:18px}
+  .num{font-size:40px}
+  .colon{font-size:28px}
+  h1{letter-spacing:-3px}
+}
+</style>
+</head>
+<body>
+<canvas id="fx"></canvas>
+<div class="orb a"></div><div class="orb b"></div>
+
+<main class="wrap">
+  <div class="glass">
+    <img class="logo" src="https://media.discordapp.net/attachments/1516127870882287729/1557344980077383740/Embleme_incandescent_sous_la_lune_dHalloween.png?backend=b2&ex=6ac77609&is=6ac62489&hm=71d5f0954225d2b5c5255316187f6e53bf470ab6a3437433cff6dfeb5db401eb&=&format=webp&quality=lossless&width=640&height=640" alt="Andreas Music Hub">
+    <div class="kicker">Andreas Music Hub</div>
+    <h1><span class="gradient">OPENING SOON</span></h1>
+    <div class="timer" aria-label="Opening countdown">
+      <div class="unit"><div id="hh" class="num">01</div><div class="label">Hours</div></div>
+      <div class="colon">:</div>
+      <div class="unit"><div id="mm" class="num">00</div><div class="label">Minutes</div></div>
+      <div class="colon">:</div>
+      <div class="unit"><div id="ss" class="num">00</div><div class="label">Seconds</div></div>
+    </div>
+    <p>The community is getting ready. The site will open automatically when the countdown reaches zero.</p>
+  </div>
+</main>
+
+<script>
+const OPEN_AT = new Date("2026-10-07T16:35:00+02:00").getTime();
+const $ = id => document.getElementById(id);
+
+function tick() {
+  const remaining = Math.max(0, OPEN_AT - Date.now());
+  const total = Math.floor(remaining / 1000);
+  const h = Math.floor(total / 3600);
+  const m = Math.floor((total % 3600) / 60);
+  const s = total % 60;
+  $("hh").textContent = String(h).padStart(2,"0");
+  $("mm").textContent = String(m).padStart(2,"0");
+  $("ss").textContent = String(s).padStart(2,"0");
+  if (remaining <= 0) {
+    window.location.replace("/");
+    return;
+  }
+  setTimeout(tick, 250);
+}
+tick();
+
+const canvas=document.getElementById("fx"),ctx=canvas.getContext("2d");
+let W,H,dpr,particles=[];
+function resize(){
+  dpr=Math.min(devicePixelRatio||1,2);W=innerWidth;H=innerHeight;
+  canvas.width=W*dpr;canvas.height=H*dpr;canvas.style.width=W+"px";canvas.style.height=H+"px";
+  ctx.setTransform(dpr,0,0,dpr,0,0);
+  particles=Array.from({length:Math.min(100,Math.floor(W/12))},()=>({
+    x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.6+.3,
+    vx:(Math.random()-.5)*.15,vy:-(Math.random()*.3+.07),a:Math.random()*.5+.08
+  }));
+}
+function draw(){
+  ctx.clearRect(0,0,W,H);
+  for(const p of particles){
+    p.x+=p.vx;p.y+=p.vy;
+    if(p.y<-8){p.y=H+8;p.x=Math.random()*W}
+    if(p.x<0)p.x=W;if(p.x>W)p.x=0;
+    ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fillStyle=`rgba(255,120,55,${p.a})`;ctx.fill();
+  }
+  requestAnimationFrame(draw);
+}
+addEventListener("resize",resize);resize();requestAnimationFrame(draw);
+</script>
+</body>
+</html>

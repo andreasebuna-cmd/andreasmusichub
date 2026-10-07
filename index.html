@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/favicon-v3.png">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Andreas Music Hub">
+  <meta property="og:description" content="Community • Events • Activities">
+  <meta property="og:image" content="/preview.png">
+  <meta property="og:url" content="https://andreasmusichub.pages.dev/">
+  <meta property="og:site_name" content="Andreas Music Hub">
+
+  <!-- Social preview -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Andreas Music Hub">
+  <meta name="twitter:description" content="Community • Events • Activities">
+  <meta name="twitter:image" content="/preview.png">
+  
+  
+<script>
+(function () {
+  const OPEN_AT = new Date("2026-10-07T16:35:00+02:00").getTime();
+  if (Date.now() < OPEN_AT) {
+    window.location.replace("/countdown/");
+  }
+})();
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#070707">
+<meta name="description" content="Andreas Music Hub — a modern community Discord server with events, activities and future rewards.">
+<title>Andreas Music Hub — Community</title>
+
+<style>
+:root{
+  --bg:#050505;
+  --bg2:#0b0908;
+  --orange:#ff6a00;
+  --orange2:#ff8a2b;
+  --text:#f7f5f2;
+  --muted:#aaa7a3;
+  --glass:rgba(255,255,255,.075);
+  --glass-strong:rgba(255,255,255,.105);
+  --border:rgba(255,255,255,.13);
+  --shadow:0 25px 90px rgba(0,0,0,.45);
+  --radius:30px;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  min-height:100vh;
+  background:
+    radial-gradient(circle at 72% 14%,rgba(255,92,0,.17),transparent 26%),
+    radial-gradient(circle at 12% 70%,rgba(255,115,0,.09),transparent 24%),
+    linear-gradient(145deg,#030303,#090706 52%,#030303);
+  color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text",Inter,Segoe UI,sans-serif;
+  overflow-x:hidden;
+}
+body:before{
+  content:"";
+  position:fixed;inset:0;pointer-events:none;z-index:100;
+  opacity:.055;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+}
+canvas#fx{position:fixed;inset:0;z-index:-2;pointer-events:none}
+.ambient{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.orb{
+  position:absolute;border-radius:999px;filter:blur(70px);opacity:.25;
+  animation:float 12s ease-in-out infinite alternate;
+}
+.orb.a{width:420px;height:420px;background:#ff5a00;left:-180px;top:20%;animation-delay:-3s}
+.orb.b{width:330px;height:330px;background:#ff8b2b;right:-120px;top:8%;animation-delay:-7s}
+.orb.c{width:270px;height:270px;background:#ff3d00;right:22%;bottom:-140px;animation-delay:-5s}
+@keyframes float{to{transform:translate3d(45px,-35px,0) scale(1.08)}}
+
+.nav{
+  position:fixed;z-index:50;top:18px;left:50%;transform:translateX(-50%);
+  width:min(1120px,calc(100% - 28px));
+  height:72px;padding:10px 12px 10px 18px;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  background:rgba(14,13,12,.56);
+  border:1px solid var(--border);
+  box-shadow:0 18px 60px rgba(0,0,0,.34),inset 0 1px 0 rgba(255,255,255,.07);
+  backdrop-filter:blur(26px) saturate(145%);
+  -webkit-backdrop-filter:blur(26px) saturate(145%);
+  border-radius:24px;
+}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:white;min-width:max-content}
+.brand img{width:42px;height:42px;border-radius:14px;object-fit:cover;box-shadow:0 0 30px rgba(255,106,0,.25)}
+.brand strong{font-size:15px;letter-spacing:-.3px}
+.brand small{display:block;color:#999;font-size:10px;margin-top:2px}
+.navlinks{display:flex;gap:4px;align-items:center}
+.navlinks button{
+  border:0;background:transparent;color:#aaa;padding:11px 13px;border-radius:14px;
+  font-weight:600;font-size:12px;cursor:pointer;transition:.25s var(--ease)
+}
+.navlinks button:hover,.navlinks button.active{color:#fff;background:rgba(255,255,255,.075)}
+.navjoin{
+  text-decoration:none;color:#090705;font-weight:800;font-size:12px;
+  background:linear-gradient(135deg,#ff8a2b,#ff5a00);
+  padding:13px 17px;border-radius:15px;
+  box-shadow:0 10px 30px rgba(255,94,0,.25),inset 0 1px rgba(255,255,255,.35);
+  transition:.25s var(--ease);white-space:nowrap
+}
+.navjoin:hover{transform:translateY(-2px);box-shadow:0 14px 38px rgba(255,94,0,.34)}
+
+main{width:min(1160px,calc(100% - 32px));margin:auto}
+section{min-height:100vh;padding:145px 0 90px;display:none}
+section.active{display:block;animation:pageIn .55s var(--ease)}
+@keyframes pageIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+
+.hero{display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:70px;min-height:calc(100vh - 50px)}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;padding:8px 11px;border-radius:999px;
+  border:1px solid rgba(255,106,0,.25);background:rgba(255,106,0,.08);
+  color:#ff9a55;font-size:11px;font-weight:800;letter-spacing:.9px;text-transform:uppercase;
+}
+.dot{width:7px;height:7px;border-radius:50%;background:#ff6a00;box-shadow:0 0 14px #ff6a00;animation:pulse 1.8s infinite}
+@keyframes pulse{50%{opacity:.35;transform:scale(.7)}}
+h1{
+  font-size:clamp(52px,7.5vw,102px);line-height:.88;letter-spacing:-6px;
+  margin:23px 0 27px;font-weight:800;
+}
+.gradient{background:linear-gradient(115deg,#fff 18%,#fff 42%,#ff8c43 72%,#ff5a00);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{max-width:570px;color:#aaa6a1;font-size:17px;line-height:1.65;letter-spacing:-.2px}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
+.btn{
+  border:1px solid var(--border);border-radius:18px;padding:16px 21px;
+  color:#fff;text-decoration:none;font-weight:800;font-size:13px;
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  background:rgba(255,255,255,.065);backdrop-filter:blur(18px);
+  box-shadow:inset 0 1px rgba(255,255,255,.09),0 14px 45px rgba(0,0,0,.22);
+  transition:.28s var(--ease)
+}
+.btn:hover{transform:translateY(-3px);background:rgba(255,255,255,.11);border-color:rgba(255,255,255,.2)}
+.btn.primary{
+  background:linear-gradient(135deg,#ff963f,#ff5a00);color:#0b0704;border-color:rgba(255,170,110,.35);
+  box-shadow:0 15px 45px rgba(255,91,0,.27),inset 0 1px rgba(255,255,255,.4)
+}
+.btn.primary:hover{box-shadow:0 20px 60px rgba(255,91,0,.4)}
+.btn svg{width:16px;height:16px}
+
+.emblem-wrap{position:relative;display:grid;place-items:center}
+.emblem-glow{
+  position:absolute;width:76%;aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,100,0,.4),transparent 65%);
+  filter:blur(32px);animation:breath 4s ease-in-out infinite
+}
+@keyframes breath{50%{transform:scale(1.12);opacity:.7}}
+.emblem-card{
+  width:min(430px,80vw);aspect-ratio:1;border-radius:38px;position:relative;overflow:hidden;
+  display:grid;place-items:center;
+  background:linear-gradient(145deg,rgba(255,255,255,.13),rgba(255,255,255,.025));
+  border:1px solid rgba(255,255,255,.18);
+  box-shadow:0 40px 110px rgba(0,0,0,.6),inset 0 1px rgba(255,255,255,.18);
+  backdrop-filter:blur(20px) saturate(140%);
+  transform:rotate(2deg);
+  transition:.5s var(--ease)
+}
+.emblem-card:hover{transform:rotate(0) scale(1.025)}
+.emblem-card:after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(125deg,rgba(255,255,255,.14),transparent 28%,transparent 72%,rgba(255,106,0,.08));
+  pointer-events:none
+}
+.emblem-card img{width:78%;height:78%;object-fit:contain;border-radius:26px;position:relative;z-index:2;filter:drop-shadow(0 22px 35px rgba(0,0,0,.5))}
+.floating-tag{
+  position:absolute;z-index:3;bottom:24px;left:24px;padding:11px 14px;border-radius:16px;
+  background:rgba(10,10,10,.52);border:1px solid rgba(255,255,255,.12);
+  backdrop-filter:blur(18px);font-size:11px;font-weight:700;color:#ddd
+}
+.floating-tag span{color:#ff8b48}
+
+.section-head{max-width:700px;margin-bottom:42px}
+.kicker{color:#ff8a46;font-weight:800;font-size:11px;text-transform:uppercase;letter-spacing:1.5px}
+h2{font-size:clamp(40px,6vw,72px);letter-spacing:-4px;line-height:.95;margin:13px 0 18px}
+.section-head p{color:#a9a5a0;line-height:1.65;font-size:16px}
+
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.card{
+  min-height:220px;padding:27px;border-radius:27px;
+  background:linear-gradient(145deg,rgba(255,255,255,.085),rgba(255,255,255,.025));
+  border:1px solid rgba(255,255,255,.105);
+  backdrop-filter:blur(25px) saturate(135%);
+  box-shadow:inset 0 1px rgba(255,255,255,.08),0 24px 70px rgba(0,0,0,.23);
+  transition:.3s var(--ease);position:relative;overflow:hidden
+}
+.card:before{
+  content:"";position:absolute;inset:-1px;background:radial-gradient(circle at 20% 0%,rgba(255,106,0,.13),transparent 45%);
+  pointer-events:none
+}
+.card:hover{transform:translateY(-6px);border-color:rgba(255,140,70,.24)}
+.icon{
+  width:45px;height:45px;border-radius:15px;display:grid;place-items:center;
+  background:rgba(255,106,0,.11);color:#ff8a48;border:1px solid rgba(255,106,0,.16);margin-bottom:24px
+}
+.icon svg{width:21px;height:21px}
+.card h3{font-size:18px;margin-bottom:10px;letter-spacing:-.5px}
+.card p{font-size:13px;color:#99958f;line-height:1.6}
+
+.showcase{
+  display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px
+}
+.panel{
+  padding:32px;border-radius:30px;background:rgba(255,255,255,.055);
+  border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(24px);
+  box-shadow:inset 0 1px rgba(255,255,255,.07),var(--shadow)
+}
+.panel.large{min-height:350px}
+.panel h3{font-size:25px;letter-spacing:-1px;margin:15px 0 9px}
+.panel p{color:#9f9b96;line-height:1.65;font-size:14px}
+.statrow{display:flex;gap:10px;margin-top:25px;flex-wrap:wrap}
+.stat{
+  padding:14px 17px;border-radius:17px;background:rgba(0,0,0,.22);
+  border:1px solid rgba(255,255,255,.07);min-width:110px
+}
+.stat strong{display:block;font-size:20px}.stat span{font-size:10px;color:#85817c;text-transform:uppercase;letter-spacing:1px}
+
+.join{
+  min-height:72vh;display:grid;place-items:center;text-align:center
+}
+.joinbox{
+  max-width:850px;padding:60px 35px;border-radius:40px;
+  background:
+    radial-gradient(circle at 50% 0%,rgba(255,106,0,.17),transparent 45%),
+    rgba(255,255,255,.055);
+  border:1px solid rgba(255,255,255,.13);backdrop-filter:blur(28px);
+  box-shadow:0 50px 120px rgba(0,0,0,.45),inset 0 1px rgba(255,255,255,.1)
+}
+.joinbox h2{font-size:clamp(48px,7vw,88px)}
+.joinbox p{max-width:580px;margin:0 auto;color:#a5a19d;line-height:1.65}
+.socials{display:flex;justify-content:center;gap:10px;margin-top:25px;flex-wrap:wrap}
+.social{
+  width:48px;height:48px;border-radius:16px;display:grid;place-items:center;color:#bbb;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);
+  transition:.25s var(--ease)
+}
+.social:hover{color:#fff;background:rgba(255,106,0,.13);border-color:rgba(255,106,0,.25);transform:translateY(-3px)}
+.social svg{width:19px;height:19px}
+
+footer{
+  padding:28px 0 35px;color:#6f6b67;font-size:11px;display:flex;justify-content:space-between;gap:20px;
+  border-top:1px solid rgba(255,255,255,.07)
+}
+footer b{color:#9a9691}
+
+@media(max-width:850px){
+  .navlinks{display:none}
+  .hero{grid-template-columns:1fr;gap:55px;padding-top:50px}
+  .hero-copy{order:1}.emblem-wrap{order:2}
+  h1{letter-spacing:-4px}
+  .grid{grid-template-columns:1fr}
+  .showcase{grid-template-columns:1fr}
+  section{padding-top:125px}
+}
+@media(max-width:520px){
+  main{width:min(100% - 22px,1160px)}
+  .nav{top:10px;width:calc(100% - 18px);height:64px}
+  .brand img{width:38px;height:38px}
+  .brand strong{font-size:13px}
+  .brand small{display:none}
+  .navjoin{padding:11px 13px}
+  .hero{min-height:auto;padding-top:30px}
+  h1{font-size:55px}
+  .hero p{font-size:15px}
+  .emblem-card{width:min(350px,86vw);border-radius:30px}
+  .card,.panel{border-radius:23px}
+  footer{flex-direction:column}
+}
+</style>
+</head>
+
+<body>
+<canvas id="fx"></canvas>
+<div class="ambient"><div class="orb a"></div><div class="orb b"></div><div class="orb c"></div></div>
+
+<header class="nav">
+  <a class="brand" href="#" onclick="showPage('home');return false;">
+    <img src="https://media.discordapp.net/attachments/1516127870882287729/1557344980077383740/Embleme_incandescent_sous_la_lune_dHalloween.png?backend=b2&ex=6ac77609&is=6ac62489&hm=71d5f0954225d2b5c5255316187f6e53bf470ab6a3437433cff6dfeb5db401eb&=&format=webp&quality=lossless&width=640&height=640" alt="Andreas Music Hub">
+    <span><strong>Andreas Music Hub</strong><small>COMMUNITY • EST. 2026</small></span>
+  </a>
+  <nav class="navlinks" aria-label="Main navigation">
+    <button data-page="home" onclick="showPage('home')">Home</button>
+    <button data-page="about" onclick="showPage('about')">About</button>
+    <button data-page="community" onclick="showPage('community')">Community</button>
+    <button data-page="server" onclick="showPage('server')">The Server</button>
+  </nav>
+  <a class="navjoin" href="https://discord.gg/yuaaf5YNfE" target="_blank" rel="noopener">Join now ↗</a>
+</header>
+
+<main>
+<section id="home" class="active">
+  <div class="hero">
+    <div class="hero-copy">
+      <span class="eyebrow"><i class="dot"></i> Community • Halloween 2026 Event</span>
+      <h1>A place to<br><span class="gradient">belong.</span></h1>
+      <p>
+        Welcome to <b>Andreas Music Hub</b>, a community Discord built around people, conversations,
+        creativity, events and good energy. A place to meet people, hang out and be part of something that keeps growing.
+      </p>
+      <div class="actions">
+        <a class="btn primary" href="https://discord.gg/yuaaf5YNfE" target="_blank" rel="noopener">Join the server ↗</a>
+        <button class="btn" onclick="showPage('about')">Discover the community <span>→</span></button>
+      </div>
+    </div>
+
+    <div class="emblem-wrap">
+      <div class="emblem-glow"></div>
+      <div class="emblem-card">
+        <img src="https://media.discordapp.net/attachments/1516127870882287729/1557344980077383740/Embleme_incandescent_sous_la_lune_dHalloween.png?backend=b2&ex=6ac77609&is=6ac62489&hm=71d5f0954225d2b5c5255316187f6e53bf470ab6a3437433cff6dfeb5db401eb&=&format=webp&quality=lossless&width=640&height=640" alt="Andreas Music Hub emblem">
+        <div class="floating-tag">ANDREAS <span>•</span> MUSIC HUB</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="section-head">
+    <div class="kicker">What we're about</div>
+    <h2>More than<br><span class="gradient">a Discord server.</span></h2>
+    <p>
+      Andreas Music Hub is a general community server. Despite the name, it isn't limited to music:
+      it's a digital place to meet people, talk, participate in events, discover activities and spend time together.
+    </p>
+  </div>
+
+  <div class="grid">
+    <article class="card">
+      <div class="icon">◎</div>
+      <h3>Community first</h3>
+      <p>A space designed around actual conversations and people, not a wall of useless channels.</p>
+    </article>
+    <article class="card">
+      <div class="icon">✦</div>
+      <h3>Creative energy</h3>
+      <p>Share projects, ideas, media and whatever strange thing you've been working on at 3 AM.</p>
+    </article>
+    <article class="card">
+      <div class="icon">⌁</div>
+      <h3>Good atmosphere</h3>
+      <p>Relaxed, social and constantly evolving, with events and seasonal moments throughout the year.</p>
+    </article>
+  </div>
+
+  <div class="showcase">
+    <div class="panel large">
+      <div class="kicker">The philosophy</div>
+      <h3>Built for people, not numbers.</h3>
+      <p>
+        Andreas Music Hub is a community first. The goal is simple: create an environment where
+        conversations feel natural, events feel worth joining and everyone has room to find their place.
+      </p>
+      <div class="statrow">
+        <div class="stat"><strong>01</strong><span>Community</span></div>
+        <div class="stat"><strong>∞</strong><span>Possibilities</span></div>
+        <div class="stat"><strong>24/7</strong><span>Online</span></div>
+      </div>
+    </div>
+    <div class="panel large">
+      <div class="kicker">The experience</div>
+      <h3>Events. Community. Surprises.</h3>
+      <p>
+        The server is built around community events, activities, seasonal experiences and future surprises.
+        Halloween is only the current event theme, not the permanent identity of Andreas Music Hub.
+      </p>
+      <div class="actions"><button class="btn" onclick="showPage('community')">Explore →</button></div>
+    </div>
+  </div>
+</section>
+
+<section id="community">
+  <div class="section-head">
+    <div class="kicker">The community</div>
+    <h2>Come for the server.<br><span class="gradient">Stay for the people.</span></h2>
+    <p>
+      A general community where different interests can coexist, with events, activities, conversations and future rewards for the people who help the server grow.
+    </p>
+  </div>
+
+  <div class="grid">
+    <article class="card">
+      <div class="icon">◌</div>
+      <h3>Chat & hangout</h3>
+      <p>Talk, joke around, meet new people and make the server feel less like another empty Discord tab.</p>
+    </article>
+    <article class="card">
+      <div class="icon">⌘</div>
+      <h3>Share & create</h3>
+      <p>Projects, edits, art, ideas, clips and other creations belong here too.</p>
+    </article>
+    <article class="card">
+      <div class="icon">◉</div>
+      <h3>Events & activities</h3>
+      <p>Community events, seasonal themes, activities and future surprises give everyone something to look forward to.</p>
+    </article>
+    <article class="card">
+      <div class="icon">✧</div>
+      <h3>Seasonal events</h3>
+      <p>Halloween and other temporary themes can transform the server for a while without changing its core identity.</p>
+    </article>
+    <article class="card">
+      <div class="icon">↗</div>
+      <h3>Discover people</h3>
+      <p>Find people with similar interests and build your own little corner of the community.</p>
+    </article>
+    <article class="card">
+      <div class="icon">+</div>
+      <h3>Room to grow</h3>
+      <p>The server evolves with its community. As it grows, bigger events and special rewards can become possible.</p>
+    </article>
+  </div>
+</section>
+
+<section id="server">
+  <div class="section-head">
+    <div class="kicker">Inside the server</div>
+    <h2>Simple structure.<br><span class="gradient">Premium experience.</span></h2>
+    <p>
+      Everything is designed to stay readable and welcoming, with room for future channels,
+      events and community features.
+    </p>
+  </div>
+
+  <div class="showcase">
+    <div class="panel">
+      <div class="kicker">01 • Social</div>
+      <h3>Talk. Share. Connect.</h3>
+      <p>Community conversations, casual discussions and places to meet people without drowning in channel clutter.</p>
+    </div>
+    <div class="panel">
+      <div class="kicker">02 • Activities</div>
+      <h3>More than just chatting.</h3>
+      <p>Community activities, events and shared experiences give the server more to do than simply talking in channels.</p>
+    </div>
+    <div class="panel">
+      <div class="kicker">03 • Events</div>
+      <h3>Something is always coming.</h3>
+      <p>Special events, seasonal changes, activities and community surprises keep the experience fresh.</p>
+    </div>
+    <div class="panel">
+      <div class="kicker">04 • Future</div>
+      <h3>More to come.</h3>
+      <p>If the community keeps growing, bigger events, special rewards and future Nitro giveaways can become part of the server.</p>
+    </div>
+  </div>
+</section>
+
+<section id="join">
+  <div class="join">
+    <div class="joinbox">
+      <div class="kicker">Your next server</div>
+      <h2>Ready to<br><span class="gradient">join us?</span></h2>
+      <p>
+        Join Andreas Music Hub and become part of a growing community. Events, activities and future rewards are waiting on the other side.
+      </p>
+      <div class="actions" style="justify-content:center">
+        <a class="btn primary" href="https://discord.gg/yuaaf5YNfE" target="_blank" rel="noopener">Join Andreas Music Hub ↗</a>
+      </div>
+      <div class="socials">
+        <a class="social" href="#" aria-label="Discord">D</a>
+        <a class="social" href="#" aria-label="TikTok">♪</a>
+        <a class="social" href="#" aria-label="Instagram">◎</a>
+        <a class="social" href="#" aria-label="X">𝕏</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <span>© 2026 <b>Andreas Music Hub</b>. Community, not a corporation.</span>
+  <span>Designed in <b>black & orange</b> 🟠</span>
+</footer>
+
+<script>
+const pages = ["home","about","community","server","join"];
+
+function showPage(id){
+  if(!pages.includes(id)) id="home";
+  document.querySelectorAll("main section").forEach(s=>s.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+  document.querySelectorAll(".navlinks button").forEach(b=>b.classList.toggle("active",b.dataset.page===id));
+  window.scrollTo({top:0,behavior:"smooth"});
+  history.replaceState(null,"","#"+id);
+}
+window.addEventListener("load",()=>{
+  const id=location.hash.slice(1);
+  showPage(pages.includes(id)?id:"home");
+});
+
+/* Animated Halloween / abstract particles */
+const canvas=document.getElementById("fx");
+const ctx=canvas.getContext("2d");
+let W,H,dpr,particles=[];
+function resize(){
+  dpr=Math.min(devicePixelRatio||1,2); W=innerWidth; H=innerHeight;
+  canvas.width=W*dpr; canvas.height=H*dpr; canvas.style.width=W+"px"; canvas.style.height=H+"px";
+  ctx.setTransform(dpr,0,0,dpr,0,0);
+  particles=Array.from({length:Math.min(115,Math.floor(W/11))},()=>({
+    x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.7+.35,
+    vx:(Math.random()-.5)*.16,vy:-(Math.random()*.35+.08),a:Math.random()*.55+.08,
+    drift:Math.random()*Math.PI*2
+  }));
+}
+function draw(t){
+  ctx.clearRect(0,0,W,H);
+  for(const p of particles){
+    p.x+=p.vx+Math.sin(t*.0004+p.drift)*.025;
+    p.y+=p.vy;
+    if(p.y<-10){p.y=H+10;p.x=Math.random()*W}
+    if(p.x<-10)p.x=W+10;if(p.x>W+10)p.x=-10;
+    ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fillStyle=`rgba(255,${100+Math.floor(Math.random()*55)},50,${p.a})`;
+    ctx.fill();
+  }
+  requestAnimationFrame(draw);
+}
+addEventListener("resize",resize);resize();requestAnimationFrame(draw);
+
+/* Tiny parallax on the hero emblem */
+addEventListener("pointermove",e=>{
+  const card=document.querySelector(".emblem-card");
+  if(!card || !document.getElementById("home").classList.contains("active")) return;
+  const x=(e.clientX/innerWidth-.5), y=(e.clientY/innerHeight-.5);
+  card.style.transform=`rotateX(${y*-3}deg) rotateY(${x*5}deg)`;
+});
+</script>
+</body>
+</html>
